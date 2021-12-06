@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Bean;
 import io.carwashsystem.adminservice.service.AdminServiceImpl;
 import io.carwashsystem.adminservice.service.RatingServiceImpl;
 import io.carwashsystem.adminservice.service.WashPackServiceImpl;
-
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
@@ -40,10 +39,10 @@ public class AdminserviceApplication {
 	private ApiInfo apiInfo() {
 	    return new ApiInfo(
 	      "On Demand Car Wash System", 
-	      "Case Study Post My Training", 
-	      "Janardhan", 
+	      "Case Study", 
+	      "Vinaya", 
 	      "Terms of service", 
-	      new Contact("Janardhan", "www.example.com", "qwerty@company.com"), 
+	      new Contact("Vinaya", "www.carwash.com", "abcd.com"), 
 	      "Free to use", "API license URL", Collections.emptyList());
 	}
 	@Bean

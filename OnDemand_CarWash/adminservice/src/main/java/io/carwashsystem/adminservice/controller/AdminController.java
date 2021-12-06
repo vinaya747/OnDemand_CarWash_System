@@ -1,15 +1,12 @@
 package io.carwashsystem.adminservice.controller;
 
-import java.io.IOException;
+
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,22 +14,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.RestTemplate;
+
+
 
 import io.carwashsystem.adminservice.model.AdminDetails;
 import io.carwashsystem.adminservice.model.Ratings;
 import io.carwashsystem.adminservice.model.WashPacks;
-import io.carwashsystem.adminservice.repo.AdminRepository;
-import io.carwashsystem.adminservice.repo.RatingRepository;
-import io.carwashsystem.adminservice.repo.WashPackRepository;
 import io.carwashsystem.adminservice.service.AdminService;
 import io.carwashsystem.adminservice.service.RatingService;
 import io.carwashsystem.adminservice.service.WashPackService;
 
 
+
+
 @RestController
-@RequestMapping("/admin/")
+@RequestMapping("/admin")
 public class AdminController {
 	@Autowired
 	private AdminService adminservice;
@@ -69,65 +65,42 @@ public class AdminController {
 	public String savepack(@RequestBody WashPacks pack)
 	{
 		 return packservice.savepack(pack);
-				 //repo1.save(pack);
-		//return " Pack saved successfully with id :"+pack.getId();
+		
 	}
 	
 	@GetMapping("/allpacks")
 	public List<WashPacks> getpack()
 	{
 		return packservice.getpack();
-				
-		//return repo1.findAll();
+	
 	}
 	
 	@DeleteMapping("/delete/{id}")
 	public String deletepack(@PathVariable int id)
 	{
 		return packservice.deletepack(id);
-		//repo1.deleteById(id);
-		//return "pack deleted with id "+id;
+		
 	}
 	
+	//customer can add rating from profilemanagement and admin can view
 	@PostMapping("/addrating")
 	public String saverating(@RequestBody Ratings rating)
 	{
-		return ratingservice.saverating(rating);
-		//repo2.save(rating);
-		//return " Thanks for Your Valuable feedback";
+		 ratingservice.saverating(rating);
+		 return "thank you for the feedback";
+		
 	}
+	
+
 	@GetMapping("/allratings")
 	public List<Ratings> getuser()
 	{
 		return ratingservice.getuser();
-		//return repo2.findAll();
+		
 	}
 	
-	/*@PostMapping("/addwasher")
-	public String addwasher() throws RestClientException,IOException {
-		
-		String baseurl="http://localhost:9090/addwasher";
-		
-		RestTemplate restTemplate=new RestTemplate();
-		ResponseEntity<String> response=null;
-		try {
-			response=restTemplate.exchange(baseurl,HttpMethod.POST,getHeaders(),String.class);
-		}catch(Exception ex)
-		{
-			System.out.println(ex);
-		}
-		System.out.println(response.getBody());
-		
-		return response.getBody().toString();
 	
-	}
-	private HttpEntity<?> getHeaders() throws IOException{
-		HttpHeaders headers=new HttpHeaders();
-		headers.set("Accept",MediaType.APPLICATION_JSON_VALUE);
-		return new HttpEntity<>(headers);
 		
-	}*/
-			
 
 	
 	

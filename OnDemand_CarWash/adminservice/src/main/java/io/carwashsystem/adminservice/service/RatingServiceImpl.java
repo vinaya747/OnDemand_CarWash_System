@@ -12,9 +12,9 @@ public class RatingServiceImpl implements RatingService{
 	@Autowired
 	RatingRepository repo;
 	@Override
-	public String saverating(Ratings rating) {
-		repo.save(rating);
-		return " Thanks for Your Valuable feedback";
+	public Ratings saverating(Ratings rating) {
+		return repo.save(rating);
+		
 	
 	}
 

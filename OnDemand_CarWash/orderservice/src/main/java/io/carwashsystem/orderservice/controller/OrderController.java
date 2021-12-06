@@ -2,8 +2,6 @@ package io.carwashsystem.orderservice.controller;
 
 
 
-
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.web.bind.annotation.RestController;
-
 
 import io.carwashsystem.orderservice.exception.ApiRequestException;
 import io.carwashsystem.orderservice.model.OrderDetails;
@@ -34,26 +31,22 @@ public class OrderController {
 	@Autowired
 	private OrderService1 service;
 	
-	//@PostMapping("/addorder")
-	 //public String addorder( @RequestBody OrderDetails order) {
-	 //	service.addorder(order);
-	 //	return "Order is Placed with Washer and will be Proceesed soon "
-	 //			+order;
-	 //}
+	@PostMapping("/addorder")
+	 public String addorder( @RequestBody OrderDetails order) {
+	 	service.addorder(order);
+	 	return "Order is Placed with Washer and will be Proceesed soon "
+	 			+order;
+	 }
 	
-	@PostMapping("/placeorder")
-	 public String placeOrder(@RequestBody OrderDetails order){
-	        return service.addorder(order);
-	    }
 	@GetMapping("/allorders")
 	public List<OrderDetails> getorder()
 	{
 		return  service.getorder(); 
 	}
-	@PutMapping("/updateorder/{id}")
-	public  ResponseEntity<Object> update(@RequestBody OrderDetails order) {
+	@PutMapping("/updateorder")
+	public String update(@RequestBody OrderDetails order) {
 		service.update(order);
-		return ResponseEntity.ok().build();
+		return "order is updated";
 	}
 	
 	 @DeleteMapping("/delete/{id}")

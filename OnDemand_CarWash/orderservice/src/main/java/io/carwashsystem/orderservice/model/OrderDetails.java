@@ -1,21 +1,30 @@
 package io.carwashsystem.orderservice.model;
 
-
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 
 @Document(collection="Orderdetails")
 public class OrderDetails {
 	
 	@Id
+	@NotEmpty(message = "Order Id must not be empty")
 	int orderId;
+	
+	@NotEmpty(message = "carName must not be empty")
 	String carName;
+
+	@NotEmpty(message = "car model must not be empty")
 	String carModel;
+	
+	@NotEmpty(message = "Washer Name must not be empty")
 	String washerName;
+
+	@NotEmpty(message = "wash pack must not be empty")
 	int washpackId;
 	
+	@NotEmpty(message = "phone no must not be empty")
 	Long phoneNo;
 
 	public int getOrderId() {
@@ -72,7 +81,6 @@ public class OrderDetails {
 				+ washerName + ", washpackId=" + washpackId + ", phoneNo=" + phoneNo + "]";
 	}
 
-	
 	
 	
 	

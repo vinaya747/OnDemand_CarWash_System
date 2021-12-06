@@ -1,12 +1,16 @@
 package io.carwashsystem.orderservice.service;
+
 import java.util.List;
+
+
 import org.springframework.stereotype.Service;
+
 import io.carwashsystem.orderservice.model.OrderDetails;
 
 
 @Service
 public interface OrderService1 {
-	public String addorder(OrderDetails order);
+	public OrderDetails addorder(OrderDetails order);
 	
 	public List<OrderDetails> getUsers();
 	
@@ -18,7 +22,7 @@ public interface OrderService1 {
 	
 	public boolean exists(int id);
 	
-	public void update(OrderDetails order);
+	public OrderDetails update(OrderDetails order);
 	
 
 }

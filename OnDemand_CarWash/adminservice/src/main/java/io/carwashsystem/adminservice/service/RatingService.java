@@ -8,7 +8,7 @@ import io.carwashsystem.adminservice.model.Ratings;
 
 public interface RatingService {
 	
-	public String saverating(Ratings rating);
+	public Ratings saverating(Ratings rating);
 	
 	public List<Ratings> getuser();
 	

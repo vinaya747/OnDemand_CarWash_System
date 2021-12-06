@@ -1,28 +1,21 @@
 package io.carwashsystem.orderservice.service;
 
-
-
-
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import io.carwashsystem.orderservice.model.OrderDetails;
 import io.carwashsystem.orderservice.repo.OrderRepository;
-
 
 public class OrderServiceImpl implements OrderService1{
 
 	@Autowired
 	private OrderRepository repository;
-
+	
 	@Override
-	public String addorder(OrderDetails order) {
-		
-		 repository.save(order);
-	        
-	        return "order is placed";
+	public OrderDetails addorder(OrderDetails order) {
+		return repository.save(order);
 	}
 
 	@Override
@@ -45,8 +38,7 @@ public class OrderServiceImpl implements OrderService1{
 	}
 
 	@Override
-	public List<OrderDetails> getorder()
-	{
+	public List<OrderDetails> getorder() {
 		return repository.findAll();
 	}
 
@@ -58,7 +50,7 @@ public class OrderServiceImpl implements OrderService1{
 
 
 	@Override
-	public void update(OrderDetails order) {
+	public OrderDetails update(OrderDetails order) {
 		OrderDetails save= repository.findById(order.getOrderId())
 				.orElseThrow(()->new RuntimeException(String.format("Cannot find customer by id %s",order.getOrderId())));
 		
@@ -67,6 +59,8 @@ public class OrderServiceImpl implements OrderService1{
 		save.setWasherName(order.getWasherName());
 		save.setWashpackId(order.getWashpackId());
 		save.setPhoneNo(order.getPhoneNo());
+		return save;
+		
 		
 	}
 

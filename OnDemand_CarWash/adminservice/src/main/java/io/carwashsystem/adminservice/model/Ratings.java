@@ -1,28 +1,21 @@
 package io.carwashsystem.adminservice.model;
 
-
-
-
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="Ratings")
+@Document(collection="Rating")
 public class Ratings {
 	
 	@Id
-
-	int rating;
-	
-	
+	int id;
 	String washerName;
+	int rating;
 	String comment;
-	
-	public int getRating() {
-		return rating;
+	public int getId() {
+		return id;
 	}
-	public void setRating(int rating) {
-		this.rating = rating;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getWasherName() {
 		return washerName;
@@ -30,16 +23,22 @@ public class Ratings {
 	public void setWasherName(String washerName) {
 		this.washerName = washerName;
 	}
+	public int getRating() {
+		return rating;
+	}
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
 	public String getComment() {
 		return comment;
 	}
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	
 	@Override
 	public String toString() {
-		return "RatingDetails [rating=" + rating + ", washerName=" + washerName + ", comment=" + comment + "]";
+		return "Ratings [id=" + id + ", washerName=" + washerName + ", rating=" + rating + ", comment=" + comment + "]";
 	}
+	
 	
 }
