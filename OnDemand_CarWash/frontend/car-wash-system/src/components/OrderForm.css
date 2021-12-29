@@ -1,0 +1,15 @@
+.wrap{
+    margin-top: 50px;
+}
+.r{
+    margin-top: 10px;
+    padding: 5px;
+    margin-left: 50px;
+    margin-right: 50px;
+ 
+}
+.box-border1{
+    border: 3px solid rgb(248, 244, 244);
+    background-color: rgb(158, 222, 241);
+    border-radius: 40px;
+}
