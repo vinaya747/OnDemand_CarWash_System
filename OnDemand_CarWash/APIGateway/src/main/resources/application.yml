@@ -1,0 +1,3 @@
+spring:  application:    name: API_Gateway  cloud:    gateway:      routes:      #Route Mapping      - id: ADMIN-SERVICE routing        uri: http://localhost:7070/        predicates:        - Path=/admin/**      #Route Mapping      - id: ORDER-SERVICE routing        uri: http://localhost:8081/        predicates:        - Path=/order/**      #Route Mapping      - id: Payments-Service        uri: http://localhost:9191/        predicates:        - Path=/payment/**      #Route Mapping      - id: USER-SERVICE routing        uri: http://localhost:8080/        predicates:        - Path=/user/**      #Route Mapping      - id: WASHER-SERVICE routing        uri: http://localhost:9090/        predicates:        - Path=/washer/**
+server:
+  port: 9000
